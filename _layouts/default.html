@@ -63,7 +63,7 @@
     body.light-mode .blog-card{background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1)}
     .blog-card h3{margin-bottom:1rem;font-size:1.3rem;transition:color .4s}
 
-    /* Make all post title links aqua, always */
+    /* Post title links (dark mode = aqua) */
     .blog-card h3 a{
       color:#64ffda;
       text-decoration:none;
@@ -73,7 +73,12 @@
     .blog-card h3 a:hover{color:#64ffda;text-shadow:0 0 6px rgba(100,255,218,.6)}
     .blog-card h3 a:focus-visible{outline:2px solid #64ffda;outline-offset:2px;border-radius:6px}
 
-    /* Body text inside cards */
+    /* Light mode: titles become black */
+    body.light-mode .blog-card h3 a,
+    body.light-mode .blog-card h3 a:visited{color:#000 !important}
+    body.light-mode .blog-card h3 a:hover{color:#000 !important;text-shadow:0 0 6px rgba(0,0,0,.3)}
+
+    /* Card body text */
     .blog-card p{color:rgba(255,255,255,.8);margin-bottom:1rem;transition:color .4s}
     body.light-mode .blog-card p{color:rgba(0,0,0,.85) !important}
     .blog-meta{font-size:.9rem;color:#64ffda;opacity:.7;transition:color .4s}
