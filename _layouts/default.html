@@ -14,6 +14,58 @@
       line-height: 1.6;
     }
 
+    /* Theme Toggle Button */
+    #theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(100,255,218,0.1);
+      border: 1px solid rgba(100,255,218,0.3);
+      color: #64ffda;
+      font-size: 1.2rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    #theme-toggle:hover {
+      background: rgba(100,255,218,0.2);
+      transform: scale(1.05);
+    }
+
+    /* Light Theme Overrides */
+    .light-mode {
+      background: linear-gradient(135deg, #f8f8f8, #e6e6f0, #dcdcf0);
+      color: #222;
+    }
+    .light-mode header {
+      background: rgba(255,255,255,0.8);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .light-mode nav a {
+      color: #222;
+    }
+    .light-mode nav a:hover {
+      background: rgba(0,0,0,0.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .light-mode .blog-card {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(0,0,0,0.1);
+    }
+    .light-mode .about-section {
+      background: rgba(255,255,255,0.85);
+      border-color: rgba(0,0,0,0.1);
+    }
+    .light-mode .fact-box {
+      background: rgba(255,255,255,0.85);
+      border-color: rgba(0,0,0,0.1);
+    }
+    .light-mode footer {
+      border-top: 1px solid rgba(0,0,0,0.1);
+      color: rgba(0,0,0,0.6);
+    }
+
     .particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
     .particle {
       position: absolute; width: 2px; height: 2px;
@@ -127,6 +179,7 @@
     <div class="logo">Common in Science</div>
     <div class="subtitle">A Personal Science Blog</div>
     <div class="author">by Dr. Tristan Nolan</div>
+    <button id="theme-toggle" aria-label="Toggle Light/Dark Mode">🌙</button>
   </header>
 
   <nav>
@@ -140,6 +193,12 @@
   </nav>
 
   <main>
+    <!-- Fun Science Fact Section -->
+    <section class="fact-section" id="fact">
+      <h2 class="section-title">Fun Science Fact of the Day</h2>
+      <div id="fact-box" class="fact-box">Loading today’s fact...</div>
+    </section>
+
     {{ content }}
   </main>
 
@@ -205,6 +264,22 @@
       const box = document.getElementById("fact-box");
       if (box) box.textContent = facts[idx];
     })();
+
+    // Theme Toggle
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      toggleBtn.textContent = '🌙';
+    } else {
+      toggleBtn.textContent = '☀️';
+    }
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const isLight = body.classList.contains('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      toggleBtn.textContent = isLight ? '🌙' : '☀️';
+    });
   </script>
 </body>
 </html>
