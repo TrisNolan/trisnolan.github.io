@@ -23,13 +23,10 @@ title: Home
   </div>
 </section>
 
-<!-- Wave divider -->
-<div style="line-height:0;">
-  <svg viewBox="0 0 1440 120" width="100%" height="120" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,60 C240,20 480,100 720,60 C960,20 1200,90 1440,50 L1440,120 L0,120 Z"
-          fill="rgba(100,255,218,0.10)"></path>
-    <path d="M0,60 C240,20 480,100 720,60 C960,20 1200,90 1440,50 L1440,120 L0,120 Z"
-          fill="#64ffda"></path>
+<!-- Animated wave divider -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path fill="#64ffda" fill-opacity="0.8" d="M0,60 Q360,120 720,60 T1440,60 V120 H0 Z"></path>
   </svg>
 </div>
 
@@ -93,3 +90,23 @@ title: Home
     </a>
   </div>
 </section>
+
+<style>
+.wave-divider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 60px;
+  margin-bottom: -10px;
+}
+.wave-divider svg {
+  width: 100%;
+  height: 100%;
+  animation: waveMove 8s ease-in-out infinite;
+}
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-20px); }
+  100% { transform: translateX(0); }
+}
+</style>
