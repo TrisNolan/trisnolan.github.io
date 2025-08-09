@@ -12,58 +12,12 @@
       color: #fff;
       overflow-x: hidden;
       line-height: 1.6;
+      transition: background 0.4s, color 0.4s;
     }
 
-    /* Theme Toggle Button */
-    #theme-toggle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(100,255,218,0.1);
-      border: 1px solid rgba(100,255,218,0.3);
-      color: #64ffda;
-      font-size: 1.2rem;
-      padding: 0.4rem 0.6rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-    #theme-toggle:hover {
-      background: rgba(100,255,218,0.2);
-      transform: scale(1.05);
-    }
-
-    /* Light Theme Overrides */
-    .light-mode {
-      background: linear-gradient(135deg, #f8f8f8, #e6e6f0, #dcdcf0);
-      color: #222;
-    }
-    .light-mode header {
-      background: rgba(255,255,255,0.8);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-    .light-mode nav a {
-      color: #222;
-    }
-    .light-mode nav a:hover {
-      background: rgba(0,0,0,0.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .light-mode .blog-card {
-      background: rgba(255,255,255,0.8);
-      border-color: rgba(0,0,0,0.1);
-    }
-    .light-mode .about-section {
-      background: rgba(255,255,255,0.85);
-      border-color: rgba(0,0,0,0.1);
-    }
-    .light-mode .fact-box {
-      background: rgba(255,255,255,0.85);
-      border-color: rgba(0,0,0,0.1);
-    }
-    .light-mode footer {
-      border-top: 1px solid rgba(0,0,0,0.1);
-      color: rgba(0,0,0,0.6);
+    body.light-mode {
+      background: #f4f4f4;
+      color: #111;
     }
 
     .particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
@@ -82,6 +36,11 @@
       background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(100,255,218,0.2);
     }
+    body.light-mode header {
+      background: rgba(255,255,255,0.6);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
     .logo {
       font-size: 3rem; font-weight: 700;
       background: linear-gradient(45deg, #64ffda, #bb86fc, #64ffda);
@@ -93,13 +52,36 @@
     .subtitle { font-size: 1.2rem; color: #bb86fc; margin-bottom: 1rem; }
     .author { font-size: 1rem; color: #64ffda; opacity: .8; }
 
+    /* Toggle Button */
+    .theme-toggle {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #64ffda;
+      transition: transform 0.3s;
+      z-index: 20;
+    }
+    .theme-toggle:hover {
+      transform: rotate(20deg);
+    }
+    body.light-mode .theme-toggle {
+      color: #333;
+    }
+
     nav {
       position: relative; z-index: 10; display: flex; justify-content: center;
       padding: 1rem 0; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px);
     }
+    body.light-mode nav {
+      background: rgba(255,255,255,0.5);
+    }
     nav ul { display: flex; list-style: none; gap: 2rem; }
     nav a {
-      color: #fff; text-decoration: none; padding: .5rem 1rem; border-radius: 25px;
+      color: inherit; text-decoration: none; padding: .5rem 1rem; border-radius: 25px;
       transition: all .3s ease; position: relative; overflow: hidden;
     }
     nav a:hover { background: rgba(100,255,218,0.1); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(100,255,218,0.3); }
@@ -129,6 +111,10 @@
       backdrop-filter: blur(10px); border: 1px solid rgba(100,255,218,0.1);
       transition: all .3s ease; position: relative; overflow: hidden;
     }
+    body.light-mode .blog-card {
+      background: rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
     .blog-card::before {
       content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
       background: radial-gradient(circle, rgba(100,255,218,0.05) 0%, transparent 70%);
@@ -149,19 +135,14 @@
       margin-bottom: 2rem; object-fit: cover;
     }
 
-    /* Fun Fact Box */
-    .fact-box {
-      max-width: 800px; margin: 0 auto; padding: 1.25rem 1.5rem;
-      border: 1px solid rgba(100,255,218,0.25); border-radius: 14px;
-      background: rgba(255,255,255,0.05); backdrop-filter: blur(8px);
-      text-align: center; font-size: 1.05rem; line-height: 1.7;
-      box-shadow: 0 10px 30px rgba(100,255,218,0.08);
-    }
-
     footer {
       text-align: center; padding: 2rem; margin-top: 4rem;
       border-top: 1px solid rgba(100,255,218,0.2); color: rgba(255,255,255,0.6);
       position: relative; z-index: 10;
+    }
+    body.light-mode footer {
+      border-top: 1px solid rgba(0,0,0,0.1);
+      color: #333;
     }
 
     @media (max-width: 768px) {
@@ -179,7 +160,7 @@
     <div class="logo">Common in Science</div>
     <div class="subtitle">A Personal Science Blog</div>
     <div class="author">by Dr. Tristan Nolan</div>
-    <button id="theme-toggle" aria-label="Toggle Light/Dark Mode">🌙</button>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
   </header>
 
   <nav>
@@ -193,12 +174,6 @@
   </nav>
 
   <main>
-    <!-- Fun Science Fact Section -->
-    <section class="fact-section" id="fact">
-      <h2 class="section-title">Fun Science Fact of the Day</h2>
-      <div id="fact-box" class="fact-box">Loading today’s fact...</div>
-    </section>
-
     {{ content }}
   </main>
 
@@ -231,54 +206,11 @@
       });
     });
 
-    // Fun Science Fact of the Day
-    (function () {
-      const facts = [
-        "The human body hosts roughly as many microbial cells as human cells, with most in the gut.",
-        "About 700 bacterial species have been identified in the human mouth.",
-        "Some bacteria are visible to the naked eye, like Thiomargarita namibiensis and Epulopiscium fishelsoni.",
-        "Mycoplasmas are among the smallest free living bacteria, about 0.2–0.3 µm in diameter.",
-        "The 1918 influenza pandemic killed more people than World War I combat.",
-        "Microbes produce around half of Earth’s oxygen, mostly via marine photosynthetic microbes.",
-        "Microbes are small, not simple. They show complex structures, metabolisms, and behaviors.",
-        "Life on Earth depends on microbes for nutrient cycling, primary production, and symbiosis.",
-        "Microbes are everywhere, but distributions are patchy and shaped by environment and dispersal.",
-        "Microbial signatures can aid forensics, for example oral and skin microbiomes linking people to objects.",
-        "Phages are the most abundant biological entities on Earth, estimated at 10^31 particles.",
-        "Biofilms are structured microbial communities with channels and chemical gradients.",
-        "Horizontal gene transfer lets bacteria share genes across lineages, accelerating evolution.",
-        "Quorum sensing enables bacteria to coordinate activity based on cell density.",
-        "Archaea form a separate domain of life with distinct lipids and information processing machinery.",
-        "Some microbes respire metals like iron or manganese instead of oxygen.",
-        "Soils can host billions of microorganisms per gram in highly diverse networks.",
-        "Wastewater based epidemiology can reveal population health trends ahead of clinical data.",
-        "Environmental resistomes include intrinsic and acquired antibiotic resistance genes.",
-        "Extremophiles thrive in boiling springs, hypersaline lakes, and polar brines."
-      ];
-
-      const now = new Date();
-      const startOfYear = new Date(now.getFullYear(), 0, 1);
-      const dayOfYear = Math.floor((now - startOfYear) / 86400000);
-      const idx = dayOfYear % facts.length;
-
-      const box = document.getElementById("fact-box");
-      if (box) box.textContent = facts[idx];
-    })();
-
-    // Theme Toggle
-    const toggleBtn = document.getElementById('theme-toggle');
-    const body = document.body;
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light-mode');
-      toggleBtn.textContent = '🌙';
-    } else {
-      toggleBtn.textContent = '☀️';
-    }
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
-      const isLight = body.classList.contains('light-mode');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      toggleBtn.textContent = isLight ? '🌙' : '☀️';
+    // Theme toggle
+    const toggleBtn = document.getElementById("theme-toggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      toggleBtn.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
     });
   </script>
 </body>
