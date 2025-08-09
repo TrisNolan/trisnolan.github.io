@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-<section class="hero" id="home">
+<section class="hero" id="home" style="text-align: center;">
   <h1>Exploring the Microscopic Universe</h1>
   <p>Dive deep into the fascinating world of microbiology, where the smallest organisms hold the biggest secrets to life, health, and our planet's future.</p>
   <div class="dna-container">
