@@ -14,22 +14,14 @@
       line-height: 1.6;
       transition: background 0.4s, color 0.4s;
     }
-
-    body.light-mode {
-      background: #f4f4f4;
-      color: #111;
-    }
+    body.light-mode { background: #f4f4f4; color: #111; }
 
     .particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
     .particle {
-      position: absolute; width: 2px; height: 2px;
-      background: #64ffda; border-radius: 50%;
-      animation: float 6s infinite ease-in-out;
+      position: absolute; width: 2px; height: 2px; background: #64ffda;
+      border-radius: 50%; animation: float 6s infinite ease-in-out;
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0); opacity: 0.7; }
-      50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
-    }
+    @keyframes float { 0%,100%{transform:translateY(0) rotate(0);opacity:.7} 50%{transform:translateY(-20px) rotate(180deg);opacity:1} }
 
     header {
       position: relative; z-index: 10; padding: 2rem 0; text-align: center;
@@ -37,10 +29,7 @@
       border-bottom: 1px solid rgba(100,255,218,0.2);
       transition: background 0.4s, border 0.4s;
     }
-    body.light-mode header {
-      background: rgba(255,255,255,0.6);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
+    body.light-mode header { background: rgba(255,255,255,0.6); border-bottom: 1px solid rgba(0,0,0,0.1); }
 
     .logo {
       font-size: 3rem; font-weight: 700;
@@ -49,26 +38,16 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       animation: gradientShift 3s ease-in-out infinite; margin-bottom: .5rem;
     }
-    @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-
+    @keyframes gradientShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
     .subtitle { font-size: 1.2rem; color: #bb86fc; margin-bottom: 1rem; transition: color 0.4s; }
     body.light-mode .subtitle { color: #6a0dad; }
-
     .author { font-size: 1rem; color: #64ffda; opacity: .8; transition: color 0.4s; }
     body.light-mode .author { color: #00695c; }
 
-    /* Toggle Button */
+    /* Theme toggle */
     .theme-toggle {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #64ffda;
-      transition: transform 0.3s, color 0.4s;
-      z-index: 20;
+      position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none;
+      font-size: 1.5rem; cursor: pointer; color: #64ffda; transition: transform .3s, color .4s; z-index: 20;
     }
     .theme-toggle:hover { transform: rotate(20deg); }
     body.light-mode .theme-toggle { color: #333; }
@@ -99,55 +78,48 @@
       transition: color 0.4s;
     }
     body.light-mode .section-title { color: #00796b; }
-
     .section-title::after {
       content: ""; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
       width: 100px; height: 2px; background: linear-gradient(90deg, transparent, #64ffda, transparent);
     }
 
-    .blog-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem; margin-top: 2rem;
-    }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
     .blog-card {
-      background: rgba(255,255,255,0.05); border-radius: 15px; padding: 2rem;
-      backdrop-filter: blur(10px); border: 1px solid rgba(100,255,218,0.1);
-      transition: all .3s ease;
+      background: rgba(255,255,255,0.05); border-radius: 15px; padding: 2rem; backdrop-filter: blur(10px);
+      border: 1px solid rgba(100,255,218,0.1); transition: all .3s ease;
     }
-    body.light-mode .blog-card {
-      background: rgba(0,0,0,0.05);
-      border: 1px solid rgba(0,0,0,0.1);
-    }
+    body.light-mode .blog-card { background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); }
     .blog-card h3 { color: #bb86fc; margin-bottom: 1rem; font-size: 1.3rem; transition: color 0.4s; }
     body.light-mode .blog-card h3 { color: #6a0dad; }
     .blog-card p { color: rgba(255,255,255,0.8); margin-bottom: 1rem; transition: color 0.4s; }
-    body.light-mode .blog-card p { color: rgba(0,0,0,0.8); }
+    body.light-mode .blog-card p { color: rgba(0,0,0,0.85) !important; }
     .blog-meta { font-size: .9rem; color: #64ffda; opacity: .7; transition: color 0.4s; }
     body.light-mode .blog-meta { color: #00796b; }
 
     .about-section {
       background: rgba(255,255,255,0.03); border-radius: 20px; padding: 3rem; margin: 4rem 0;
-      backdrop-filter: blur(15px); border: 1px solid rgba(100,255,218,0.1); text-align: center;
-      transition: background 0.4s, border 0.4s;
+      backdrop-filter: blur(15px); border: 1px solid rgba(100,255,218,0.1);
+      text-align: center; transition: background 0.4s, border 0.4s;
     }
-    body.light-mode .about-section {
-      background: rgba(0,0,0,0.03);
-      border: 1px solid rgba(0,0,0,0.1);
+    body.light-mode .about-section { background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.1); }
+    .about-section img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #64ffda; margin-bottom: 2rem; object-fit: cover; }
+
+    /* Fun fact */
+    .fact-box {
+      max-width: 800px; margin: 0 auto 2rem; padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(100,255,218,0.25); border-radius: 14px;
+      background: rgba(255,255,255,0.05); backdrop-filter: blur(8px);
+      text-align: center; font-size: 1.05rem; line-height: 1.7;
+      box-shadow: 0 10px 30px rgba(100,255,218,0.08);
     }
-    .about-section img {
-      width: 150px; height: 150px; border-radius: 50%; border: 3px solid #64ffda;
-      margin-bottom: 2rem; object-fit: cover;
-    }
+    body.light-mode .fact-box { background: rgba(255,255,255,0.85); border-color: rgba(0,0,0,0.1); color: #111; }
 
     footer {
       text-align: center; padding: 2rem; margin-top: 4rem;
       border-top: 1px solid rgba(100,255,218,0.2); color: rgba(255,255,255,0.6);
       transition: color 0.4s, border 0.4s;
     }
-    body.light-mode footer {
-      border-top: 1px solid rgba(0,0,0,0.1);
-      color: #333;
-    }
+    body.light-mode footer { border-top: 1px solid rgba(0,0,0,0.1); color: #333; }
 
     @media (max-width: 768px) {
       .logo { font-size: 2rem; }
@@ -178,6 +150,12 @@
   </nav>
 
   <main>
+    <!-- Fun Science Fact of the Day -->
+    <section class="fact-section" id="fact">
+      <h2 class="section-title">Fun Science Fact of the Day</h2>
+      <div id="fact-box" class="fact-box">Loading today’s fact...</div>
+    </section>
+
     {{ content }}
   </main>
 
@@ -210,11 +188,50 @@
       });
     });
 
-    // Theme toggle
+    // Fun Science Fact of the Day
+    (function () {
+      const facts = [
+        "The human body hosts roughly as many microbial cells as human cells, with most in the gut.",
+        "About 700 bacterial species have been identified in the human mouth.",
+        "Some bacteria are visible to the naked eye, like Thiomargarita namibiensis and Epulopiscium fishelsoni.",
+        "Mycoplasmas are among the smallest free living bacteria, about 0.2–0.3 µm in diameter.",
+        "The 1918 influenza pandemic killed more people than World War I combat.",
+        "Microbes produce around half of Earth’s oxygen, mostly via marine photosynthetic microbes.",
+        "Microbes are small, not simple. They show complex structures, metabolisms, and behaviors.",
+        "Life on Earth depends on microbes for nutrient cycling, primary production, and symbiosis.",
+        "Microbes are everywhere, but distributions are patchy and shaped by environment and dispersal.",
+        "Microbial signatures can aid forensics, for example oral and skin microbiomes linking people to objects.",
+        "Phages are the most abundant biological entities on Earth, estimated at 10^31 particles.",
+        "Biofilms are structured microbial communities with channels and chemical gradients.",
+        "Horizontal gene transfer lets bacteria share genes across lineages, accelerating evolution.",
+        "Quorum sensing enables bacteria to coordinate activity based on cell density.",
+        "Archaea form a separate domain of life with distinct lipids and information processing machinery.",
+        "Some microbes respire metals like iron or manganese instead of oxygen.",
+        "Soils can host billions of microorganisms per gram in highly diverse networks.",
+        "Wastewater based epidemiology can reveal population health trends ahead of clinical data.",
+        "Environmental resistomes include intrinsic and acquired antibiotic resistance genes.",
+        "Extremophiles thrive in boiling springs, hypersaline lakes, and polar brines."
+      ];
+      const now = new Date();
+      const startOfYear = new Date(now.getFullYear(), 0, 1);
+      const dayOfYear = Math.floor((now - startOfYear) / 86400000);
+      const idx = dayOfYear % facts.length;
+      const box = document.getElementById("fact-box");
+      if (box) box.textContent = facts[idx];
+    })();
+
+    // Theme toggle with persistence
     const toggleBtn = document.getElementById("theme-toggle");
+    const stored = localStorage.getItem("theme");
+    if (stored === "light") {
+      document.body.classList.add("light-mode");
+      toggleBtn.textContent = "☀️";
+    }
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("light-mode");
-      toggleBtn.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+      const isLight = document.body.classList.contains("light-mode");
+      toggleBtn.textContent = isLight ? "☀️" : "🌙";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
     });
   </script>
 </body>
