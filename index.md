@@ -23,6 +23,16 @@ title: Home
   </div>
 </section>
 
+<!-- Wave divider -->
+<div style="line-height:0;">
+  <svg viewBox="0 0 1440 120" width="100%" height="120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,60 C240,20 480,100 720,60 C960,20 1200,90 1440,50 L1440,120 L0,120 Z"
+          fill="rgba(100,255,218,0.10)"></path>
+    <path d="M0,60 C240,20 480,100 720,60 C960,20 1200,90 1440,50 L1440,120 L0,120 Z"
+          fill="#64ffda"></path>
+  </svg>
+</div>
+
 <section class="blog-section" id="blog">
   <h2 class="section-title">Latest Research & Insights</h2>
   <div class="blog-grid">
@@ -35,6 +45,26 @@ title: Home
   {% endfor %}
   </div>
 </section>
+
+<!-- Microbe dots divider -->
+<svg viewBox="0 0 1440 40" width="100%" height="40" preserveAspectRatio="none" aria-hidden="true"
+     style="display:block; background:transparent;">
+  <rect x="0" y="19" width="1440" height="2" fill="rgba(100,255,218,0.25)"></rect>
+  <circle cx="80"  cy="20" r="3"  fill="#64ffda"/>
+  <circle cx="210" cy="20" r="2.5" fill="#64ffda"/>
+  <circle cx="340" cy="20" r="3.5" fill="#64ffda"/>
+  <circle cx="470" cy="20" r="2.8" fill="#64ffda"/>
+  <circle cx="600" cy="20" r="3.2" fill="#64ffda"/>
+  <circle cx="730" cy="20" r="2.6" fill="#64ffda"/>
+  <circle cx="860" cy="20" r="3.4" fill="#64ffda"/>
+  <circle cx="990" cy="20" r="2.7" fill="#64ffda"/>
+  <circle cx="1120" cy="20" r="3.1" fill="#64ffda"/>
+  <circle cx="1250" cy="20" r="2.9" fill="#64ffda"/>
+  <rect x="150" y="17" width="22" height="6" rx="3" fill="rgba(100,255,218,0.9)"/>
+  <rect x="430" y="17" width="18" height="6" rx="3" fill="rgba(100,255,218,0.9)"/>
+  <rect x="810" y="17" width="20" height="6" rx="3" fill="rgba(100,255,218,0.9)"/>
+  <rect x="1190" y="17" width="24" height="6" rx="3" fill="rgba(100,255,218,0.9)"/>
+</svg>
 
 <section class="about-section" id="about">
   <h2 class="section-title">About Dr. Tristan Nolan</h2>
