@@ -1,149 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{{ page.title }} - {{ site.title }}</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f0f23, #1a1a3e, #2d2d5f);
-      color: #fff;
-      overflow-x: hidden;
-      line-height: 1.6;
-      transition: background .4s, color .4s;
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:Arial,sans-serif;background:linear-gradient(135deg,#0f0f23,#1a1a3e,#2d2d5f);
+      color:#fff;overflow-x:hidden;line-height:1.6;transition:background .4s,color .4s
     }
-    body.light-mode { background: #f4f4f4; color: #111; }
+    body.light-mode{background:#f4f4f4;color:#111}
 
-    .particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
-    .particle {
-      position: absolute; width: 2px; height: 2px; background: #64ffda;
-      border-radius: 50%; animation: float 6s infinite ease-in-out;
+    .particles{position:fixed;inset:0;pointer-events:none;z-index:1}
+    .particle{position:absolute;width:2px;height:2px;background:#64ffda;border-radius:50%;animation:float 6s infinite ease-in-out}
+    @keyframes float{0%,100%{transform:translateY(0) rotate(0);opacity:.7}50%{transform:translateY(-20px) rotate(180deg);opacity:1}}
+
+    header{
+      position:relative;z-index:10;padding:2rem 0;text-align:center;
+      background:rgba(0,0,0,.3);backdrop-filter:blur(10px);border-bottom:1px solid rgba(100,255,218,.2);
+      transition:background .4s,border .4s
     }
-    @keyframes float {
-      0%,100% { transform: translateY(0) rotate(0); opacity: .7; }
-      50%     { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+    body.light-mode header{background:rgba(255,255,255,.6);border-bottom:1px solid rgba(0,0,0,.1)}
+
+    .logo{
+      font-size:3rem;font-weight:700;background:linear-gradient(45deg,#64ffda,#bb86fc,#64ffda);
+      background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      animation:gradientShift 3s ease-in-out infinite;margin-bottom:.5rem
     }
+    @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .subtitle{font-size:1.2rem;color:#bb86fc;margin-bottom:1rem;transition:color .4s}
+    body.light-mode .subtitle{color:#6a0dad}
+    .author{font-size:1rem;color:#64ffda;opacity:.8;transition:color .4s}
+    body.light-mode .author{color:#00695c}
 
-    header {
-      position: relative; z-index: 10; padding: 2rem 0; text-align: center;
-      background: rgba(0,0,0,.3); backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(100,255,218,.2);
-      transition: background .4s, border .4s;
+    .theme-toggle{
+      position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.5rem;
+      cursor:pointer;color:#64ffda;transition:transform .3s,color .4s;z-index:20
     }
-    body.light-mode header {
-      background: rgba(255,255,255,.6);
-      border-bottom: 1px solid rgba(0,0,0,.1);
+    .theme-toggle:hover{transform:rotate(20deg)}
+    body.light-mode .theme-toggle{color:#333}
+
+    nav{
+      position:relative;z-index:10;display:flex;justify-content:center;padding:1rem 0;
+      background:rgba(0,0,0,.2);backdrop-filter:blur(5px);transition:background .4s
     }
+    body.light-mode nav{background:rgba(255,255,255,.5)}
+    nav ul{display:flex;list-style:none;gap:2rem}
+    nav a{color:inherit;text-decoration:none;padding:.5rem 1rem;border-radius:25px;transition:all .3s ease;position:relative;overflow:hidden}
+    nav a:hover{background:rgba(100,255,218,.1);transform:translateY(-2px);box-shadow:0 5px 15px rgba(100,255,218,.3)}
+    nav a::before{content:"";position:absolute;inset:0;left:-100%;background:linear-gradient(90deg,transparent,rgba(100,255,218,.2),transparent);transition:left .5s}
+    nav a:hover::before{left:100%}
 
-    .logo {
-      font-size: 3rem; font-weight: 700;
-      background: linear-gradient(45deg, #64ffda, #bb86fc, #64ffda);
-      background-size: 200% 200%;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      animation: gradientShift 3s ease-in-out infinite; margin-bottom: .5rem;
+    main{position:relative;z-index:10;max-width:1200px;margin:0 auto;padding:2rem}
+
+    .section-title{font-size:2rem;text-align:center;margin-bottom:3rem;color:#64ffda;position:relative;transition:color .4s}
+    body.light-mode .section-title{color:#00796b}
+    .section-title::after{content:"";position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:100px;height:2px;background:linear-gradient(90deg,transparent,#64ffda,transparent)}
+
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;margin-top:2rem}
+    .blog-card{background:rgba(255,255,255,.05);border-radius:15px;padding:2rem;backdrop-filter:blur(10px);border:1px solid rgba(100,255,218,.1);transition:all .3s ease}
+    body.light-mode .blog-card{background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1)}
+    .blog-card h3{color:#bb86fc;margin-bottom:1rem;font-size:1.3rem;transition:color .4s}
+    body.light-mode .blog-card h3{color:#6a0dad}
+    .blog-card p{color:rgba(255,255,255,.8);margin-bottom:1rem;transition:color .4s}
+    body.light-mode .blog-card p{color:rgba(0,0,0,.85) !important}
+    .blog-meta{font-size:.9rem;color:#64ffda;opacity:.7;transition:color .4s}
+    body.light-mode .blog-meta{color:#00796b}
+
+    .about-section{background:rgba(255,255,255,.03);border-radius:20px;padding:3rem;margin:4rem 0;backdrop-filter:blur(15px);border:1px solid rgba(100,255,218,.1);text-align:center;transition:background .4s,border .4s}
+    body.light-mode .about-section{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.1)}
+    .about-section img{width:150px;height:150px;border-radius:50%;border:3px solid #64ffda;margin-bottom:2rem;object-fit:cover}
+
+    .fact-box{
+      max-width:800px;margin:0 auto 2rem;padding:1.25rem 1.5rem;border:1px solid rgba(100,255,218,.25);
+      border-radius:14px;background:rgba(255,255,255,.05);backdrop-filter:blur(8px);text-align:center;font-size:1.05rem;line-height:1.7;
+      box-shadow:0 10px 30px rgba(100,255,218,.08)
     }
-    @keyframes gradientShift { 0%,100% { background-position: 0% 50% } 50% { background-position: 100% 50% } }
+    body.light-mode .fact-box{background:rgba(255,255,255,.85);border-color:rgba(0,0,0,.1);color:#111}
 
-    .subtitle { font-size: 1.2rem; color: #bb86fc; margin-bottom: 1rem; transition: color .4s; }
-    body.light-mode .subtitle { color: #6a0dad; }
+    footer{ text-align:center;padding:2rem;margin-top:4rem;border-top:1px solid rgba(100,255,218,.2);color:rgba(255,255,255,.6);transition:color .4s,border .4s }
+    body.light-mode footer{border-top:1px solid rgba(0,0,0,.1);color:#333}
 
-    .author { font-size: 1rem; color: #64ffda; opacity: .8; transition: color .4s; }
-    body.light-mode .author { color: #00695c; }
-
-    .theme-toggle {
-      position: absolute; top: 1.5rem; right: 1.5rem;
-      background: none; border: none; font-size: 1.5rem; cursor: pointer;
-      color: #64ffda; transition: transform .3s, color .4s; z-index: 20;
-    }
-    .theme-toggle:hover { transform: rotate(20deg); }
-    body.light-mode .theme-toggle { color: #333; }
-
-    nav {
-      position: relative; z-index: 10; display: flex; justify-content: center;
-      padding: 1rem 0; background: rgba(0,0,0,.2); backdrop-filter: blur(5px);
-      transition: background .4s;
-    }
-    body.light-mode nav { background: rgba(255,255,255,.5); }
-
-    nav ul { display: flex; list-style: none; gap: 2rem; }
-    nav a {
-      color: inherit; text-decoration: none; padding: .5rem 1rem; border-radius: 25px;
-      transition: all .3s ease; position: relative; overflow: hidden;
-    }
-    nav a:hover {
-      background: rgba(100,255,218,.1);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(100,255,218,.3);
-    }
-    nav a::before {
-      content: ""; position: absolute; inset: 0; left: -100%;
-      background: linear-gradient(90deg, transparent, rgba(100,255,218,.2), transparent);
-      transition: left .5s;
-    }
-    nav a:hover::before { left: 100%; }
-
-    main { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 2rem; }
-
-    .section-title {
-      font-size: 2rem; text-align: center; margin-bottom: 3rem; color: #64ffda; position: relative;
-      transition: color .4s;
-    }
-    body.light-mode .section-title { color: #00796b; }
-    .section-title::after {
-      content: ""; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
-      width: 100px; height: 2px; background: linear-gradient(90deg, transparent, #64ffda, transparent);
-    }
-
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
-
-    .blog-card {
-      background: rgba(255,255,255,.05); border-radius: 15px; padding: 2rem;
-      backdrop-filter: blur(10px); border: 1px solid rgba(100,255,218,.1); transition: all .3s ease;
-    }
-    body.light-mode .blog-card { background: rgba(0,0,0,.05); border: 1px solid rgba(0,0,0,.1); }
-
-    .blog-card h3 { color: #bb86fc; margin-bottom: 1rem; font-size: 1.3rem; transition: color .4s; }
-    body.light-mode .blog-card h3 { color: #6a0dad; }
-
-    .blog-card p { color: rgba(255,255,255,.8); margin-bottom: 1rem; transition: color .4s; }
-    body.light-mode .blog-card p { color: rgba(0,0,0,.85) !important; }
-
-    .blog-meta { font-size: .9rem; color: #64ffda; opacity: .7; transition: color .4s; }
-    body.light-mode .blog-meta { color: #00796b; }
-
-    .about-section {
-      background: rgba(255,255,255,.03); border-radius: 20px; padding: 3rem; margin: 4rem 0;
-      backdrop-filter: blur(15px); border: 1px solid rgba(100,255,218,.1);
-      text-align: center; transition: background .4s, border .4s;
-    }
-    body.light-mode .about-section { background: rgba(0,0,0,.03); border: 1px solid rgba(0,0,0,.1); }
-    .about-section img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #64ffda; margin-bottom: 2rem; object-fit: cover; }
-
-    /* Fun fact box */
-    .fact-box {
-      max-width: 800px; margin: 0 auto 2rem; padding: 1.25rem 1.5rem;
-      border: 1px solid rgba(100,255,218,.25); border-radius: 14px;
-      background: rgba(255,255,255,.05); backdrop-filter: blur(8px);
-      text-align: center; font-size: 1.05rem; line-height: 1.7;
-      box-shadow: 0 10px 30px rgba(100,255,218,.08);
-    }
-    body.light-mode .fact-box { background: rgba(255,255,255,.85); border-color: rgba(0,0,0,.1); color: #111; }
-
-    footer {
-      text-align: center; padding: 2rem; margin-top: 4rem;
-      border-top: 1px solid rgba(100,255,218,.2); color: rgba(255,255,255,.6);
-      transition: color .4s, border .4s;
-    }
-    body.light-mode footer { border-top: 1px solid rgba(0,0,0,.1); color: #333; }
-
-    @media (max-width: 768px) {
-      .logo { font-size: 2rem; }
-      main { padding: 1rem; }
-      nav ul { flex-direction: column; gap: 1rem; }
-      .blog-grid { grid-template-columns: 1fr; }
+    @media (max-width:768px){
+      .logo{font-size:2rem}
+      main{padding:1rem}
+      nav ul{flex-direction:column;gap:1rem}
+      .blog-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -168,7 +111,6 @@
   </nav>
 
   <main>
-    <!-- Fun Science Fact of the Day -->
     <section class="fact-section" id="fact">
       <h2 class="section-title">Fun Science Fact of the Day</h2>
       <div id="fact-box" class="fact-box">Loading today’s fact...</div>
@@ -183,31 +125,31 @@
   </footer>
 
   <script>
-    function createParticles() {
-      const wrap = document.getElementById('particles');
-      const n = 50;
-      for (let i = 0; i < n; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.top = Math.random() * 100 + '%';
-        p.style.animationDelay = Math.random() * 6 + 's';
-        p.style.animationDuration = Math.random() * 4 + 4 + 's';
+    // particles
+    function createParticles(){
+      const wrap=document.getElementById('particles'); const n=50;
+      for(let i=0;i<n;i++){
+        const p=document.createElement('div');
+        p.className='particle';
+        p.style.left=Math.random()*100+'%';
+        p.style.top=Math.random()*100+'%';
+        p.style.animationDelay=Math.random()*6+'s';
+        p.style.animationDuration=Math.random()*4+4+'s';
         wrap.appendChild(p);
       }
     }
-    window.addEventListener('load', createParticles);
-    window.addEventListener('scroll', () => {
-      const y = window.pageYOffset;
-      document.querySelectorAll('.particle').forEach((el, i) => {
-        const speed = (i % 3 + 1) * 0.5;
-        el.style.transform = 'translateY(' + y * speed + 'px)';
+    window.addEventListener('load',createParticles);
+    window.addEventListener('scroll',()=> {
+      const y=window.pageYOffset;
+      document.querySelectorAll('.particle').forEach((el,i)=>{
+        const speed=(i%3+1)*0.5;
+        el.style.transform='translateY('+y*speed+'px)';
       });
     });
 
-    // Fun fact (runs after DOM is ready; fills #fact-box or #fact-text)
-    document.addEventListener('DOMContentLoaded', () => {
-      const facts = [
+    // daily fact (robust: fills #fact-box or an old #fact-text if present)
+    document.addEventListener('DOMContentLoaded',()=> {
+      const facts=[
         "The human body hosts roughly as many microbial cells as human cells, with most in the gut.",
         "About 700 bacterial species have been identified in the human mouth.",
         "Some bacteria are visible to the naked eye, like Thiomargarita namibiensis and Epulopiscium fishelsoni.",
@@ -229,27 +171,24 @@
         "Environmental resistomes include intrinsic and acquired antibiotic resistance genes.",
         "Extremophiles thrive in boiling springs, hypersaline lakes, and polar brines."
       ];
-      const now = new Date();
-      const start = new Date(now.getFullYear(), 0, 1);
-      const dayOfYear = Math.floor((now - start) / 86400000);
-      const idx = dayOfYear % facts.length;
+      const now=new Date();
+      const start=new Date(now.getFullYear(),0,1);
+      const day=Math.floor((now-start)/86400000);
+      const fact=facts[day%facts.length];
 
-      const placeholder = document.querySelector('#fact-box, #fact-text');
-      if (placeholder) placeholder.textContent = facts[idx];
+      const targets=document.querySelectorAll('#fact-box, #fact-text');
+      targets.forEach(el=>{ el.textContent=fact; });
     });
 
-    // Theme toggle with persistence
-    const toggleBtn = document.getElementById('theme-toggle');
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') {
-      document.body.classList.add('light-mode');
-      toggleBtn.textContent = '☀️';
-    }
-    toggleBtn.addEventListener('click', () => {
+    // theme toggle + persistence
+    const toggle=document.getElementById('theme-toggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){ document.body.classList.add('light-mode'); toggle.textContent='☀️'; }
+    toggle.addEventListener('click',()=>{
       document.body.classList.toggle('light-mode');
-      const isLight = document.body.classList.contains('light-mode');
-      toggleBtn.textContent = isLight ? '☀️' : '🌙';
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      const isLight=document.body.classList.contains('light-mode');
+      toggle.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
     });
   </script>
 </body>
