@@ -35,6 +35,7 @@
       position: relative; z-index: 10; padding: 2rem 0; text-align: center;
       background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(100,255,218,0.2);
+      transition: background 0.4s, border 0.4s;
     }
     body.light-mode header {
       background: rgba(255,255,255,0.6);
@@ -49,8 +50,12 @@
       animation: gradientShift 3s ease-in-out infinite; margin-bottom: .5rem;
     }
     @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-    .subtitle { font-size: 1.2rem; color: #bb86fc; margin-bottom: 1rem; }
-    .author { font-size: 1rem; color: #64ffda; opacity: .8; }
+
+    .subtitle { font-size: 1.2rem; color: #bb86fc; margin-bottom: 1rem; transition: color 0.4s; }
+    body.light-mode .subtitle { color: #6a0dad; }
+
+    .author { font-size: 1rem; color: #64ffda; opacity: .8; transition: color 0.4s; }
+    body.light-mode .author { color: #00695c; }
 
     /* Toggle Button */
     .theme-toggle {
@@ -62,23 +67,18 @@
       font-size: 1.5rem;
       cursor: pointer;
       color: #64ffda;
-      transition: transform 0.3s;
+      transition: transform 0.3s, color 0.4s;
       z-index: 20;
     }
-    .theme-toggle:hover {
-      transform: rotate(20deg);
-    }
-    body.light-mode .theme-toggle {
-      color: #333;
-    }
+    .theme-toggle:hover { transform: rotate(20deg); }
+    body.light-mode .theme-toggle { color: #333; }
 
     nav {
       position: relative; z-index: 10; display: flex; justify-content: center;
       padding: 1rem 0; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px);
+      transition: background 0.4s;
     }
-    body.light-mode nav {
-      background: rgba(255,255,255,0.5);
-    }
+    body.light-mode nav { background: rgba(255,255,255,0.5); }
     nav ul { display: flex; list-style: none; gap: 2rem; }
     nav a {
       color: inherit; text-decoration: none; padding: .5rem 1rem; border-radius: 25px;
@@ -96,7 +96,10 @@
 
     .section-title {
       font-size: 2rem; text-align: center; margin-bottom: 3rem; color: #64ffda; position: relative;
+      transition: color 0.4s;
     }
+    body.light-mode .section-title { color: #00796b; }
+
     .section-title::after {
       content: ""; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
       width: 100px; height: 2px; background: linear-gradient(90deg, transparent, #64ffda, transparent);
@@ -109,26 +112,27 @@
     .blog-card {
       background: rgba(255,255,255,0.05); border-radius: 15px; padding: 2rem;
       backdrop-filter: blur(10px); border: 1px solid rgba(100,255,218,0.1);
-      transition: all .3s ease; position: relative; overflow: hidden;
+      transition: all .3s ease;
     }
     body.light-mode .blog-card {
       background: rgba(0,0,0,0.05);
       border: 1px solid rgba(0,0,0,0.1);
     }
-    .blog-card::before {
-      content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: radial-gradient(circle, rgba(100,255,218,0.05) 0%, transparent 70%);
-      transition: all .3s ease; transform: scale(0);
-    }
-    .blog-card:hover::before { transform: scale(1); }
-    .blog-card:hover { transform: translateY(-5px); border-color: rgba(100,255,218,0.3); box-shadow: 0 10px 30px rgba(100,255,218,0.1); }
-    .blog-card h3 { color: #bb86fc; margin-bottom: 1rem; font-size: 1.3rem; position: relative; z-index: 2; }
-    .blog-card p { color: rgba(255,255,255,0.8); margin-bottom: 1rem; position: relative; z-index: 2; }
-    .blog-meta { font-size: .9rem; color: #64ffda; opacity: .7; position: relative; z-index: 2; }
+    .blog-card h3 { color: #bb86fc; margin-bottom: 1rem; font-size: 1.3rem; transition: color 0.4s; }
+    body.light-mode .blog-card h3 { color: #6a0dad; }
+    .blog-card p { color: rgba(255,255,255,0.8); margin-bottom: 1rem; transition: color 0.4s; }
+    body.light-mode .blog-card p { color: rgba(0,0,0,0.8); }
+    .blog-meta { font-size: .9rem; color: #64ffda; opacity: .7; transition: color 0.4s; }
+    body.light-mode .blog-meta { color: #00796b; }
 
     .about-section {
       background: rgba(255,255,255,0.03); border-radius: 20px; padding: 3rem; margin: 4rem 0;
       backdrop-filter: blur(15px); border: 1px solid rgba(100,255,218,0.1); text-align: center;
+      transition: background 0.4s, border 0.4s;
+    }
+    body.light-mode .about-section {
+      background: rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.1);
     }
     .about-section img {
       width: 150px; height: 150px; border-radius: 50%; border: 3px solid #64ffda;
@@ -138,7 +142,7 @@
     footer {
       text-align: center; padding: 2rem; margin-top: 4rem;
       border-top: 1px solid rgba(100,255,218,0.2); color: rgba(255,255,255,0.6);
-      position: relative; z-index: 10;
+      transition: color 0.4s, border 0.4s;
     }
     body.light-mode footer {
       border-top: 1px solid rgba(0,0,0,0.1);
