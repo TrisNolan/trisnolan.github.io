@@ -15,10 +15,10 @@ title: Home
     </div>
   </div>
   <div class="hero-image" style="margin-top: 2rem;">
-    <img src="{{ '/assets/images/tristan-lab-cartoon.png' | relative_url }}" 
-         alt="Tristan cartoon in lab" 
-         style="max-width: 300px; width: 100%; border-radius: 10px; 
-                box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2); 
+    <img src="{{ '/assets/images/tristan-lab-cartoon.png' | relative_url }}"
+         alt="Tristan cartoon in lab"
+         style="max-width: 300px; width: 100%; border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
                 display: block; margin-left: auto; margin-right: auto;">
   </div>
 </section>
@@ -43,53 +43,18 @@ title: Home
   </div>
 </section>
 
-<!-- Microbe of the Month Section -->
-<section id="microbe-month" style="padding: 2rem 1rem; text-align: center;">
-  <h2 class="section-title">🦠 Microbe of the Month</h2>
-  <div id="microbe-card" style="background: rgba(100,255,218,0.05); border: 1px solid rgba(100,255,218,0.3); border-radius: 10px; max-width: 500px; margin: auto; padding: 1.5rem;">
-    <a id="microbe-link" href="#" target="_blank" style="text-decoration: none; color: inherit;">
-      <img id="microbe-img" src="" alt="Microbe image" style="max-width: 100%; border-radius: 8px; margin-bottom: 1rem;">
-      <h3 id="microbe-name" style="color: #64ffda;"></h3>
-      <p id="microbe-desc" style="line-height: 1.5;"></p>
-    </a>
-    <small id="microbe-source" style="color: rgba(255,255,255,0.6); display: block; margin-top: 0.5rem;"></small>
+<!-- Microbe of the Month (working, uses local images via layout JS) -->
+<section id="microbe" aria-labelledby="microbe-heading">
+  <h2 id="microbe-heading" class="section-title">🦠 Microbe of the Month</h2>
+  <div class="microbe-card">
+    <img id="microbe-img" class="microbe-img"
+         src="{{ '/assets/images/fallback.jpeg' | relative_url }}"
+         alt="Microbe image">
+    <h3 id="microbe-name" class="microbe-title">Loading…</h3>
+    <p id="microbe-blurb" class="microbe-blurb">Fetching this month’s microbe…</p>
+    <a id="microbe-source" class="microbe-source" href="#" target="_blank" rel="noopener">Source</a>
   </div>
 </section>
-
-<script>
-  const microbes = [
-    {
-      name: "Deinococcus radiodurans",
-      img: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Deinococcus_radiodurans.png",
-      desc: "Known as 'Conan the Bacterium', it can survive extreme radiation, cold, dehydration, and vacuum of space.",
-      source: "Source: Wikipedia",
-      link: "https://en.wikipedia.org/wiki/Deinococcus_radiodurans"
-    },
-    {
-      name: "Vibrio fischeri",
-      img: "https://upload.wikimedia.org/wikipedia/commons/8/82/Vibrio_fischeri.jpg",
-      desc: "A bioluminescent marine bacterium that lives in symbiosis with certain squid species, helping them evade predators.",
-      source: "Source: NOAA",
-      link: "https://en.wikipedia.org/wiki/Vibrio_fischeri"
-    },
-    {
-      name: "Bdellovibrio bacteriovorus",
-      img: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Bdellovibrio_bacteriovorus_TEM.jpg",
-      desc: "A bacterial predator that invades and consumes other bacteria from the inside out.",
-      source: "Source: Microbiology Society",
-      link: "https://en.wikipedia.org/wiki/Bdellovibrio_bacteriovorus"
-    }
-  ];
-
-  const monthIndex = new Date().getMonth() % microbes.length;
-  const microbe = microbes[monthIndex];
-
-  document.getElementById("microbe-name").textContent = microbe.name;
-  document.getElementById("microbe-img").src = microbe.img;
-  document.getElementById("microbe-desc").textContent = microbe.desc;
-  document.getElementById("microbe-source").textContent = microbe.source;
-  document.getElementById("microbe-link").href = microbe.link;
-</script>
 
 <!-- Microbe dots divider -->
 <svg viewBox="0 0 1440 40" width="100%" height="40" preserveAspectRatio="none" aria-hidden="true"
@@ -118,8 +83,8 @@ title: Home
   <p>This blog is where I share ideas and insights, aiming to make the fascinating world of microbiology accessible to anyone with an interest in how microbes shape our lives.</p>
 
   <div style="margin-top: 1.5rem; text-align: center;">
-    <a href="mailto:commoninscience.blog@outlook.com" 
-       style="background: #64ffda; color: #0f0f23; padding: 0.8rem 1.5rem; 
+    <a href="mailto:commoninscience.blog@outlook.com"
+       style="background: #64ffda; color: #0f0f23; padding: 0.8rem 1.5rem;
               border-radius: 30px; text-decoration: none; font-weight: bold;">
       📧 Email Me
     </a>
@@ -132,7 +97,7 @@ title: Home
     You can explore my full list of peer-reviewed publications, preprints, and conference contributions on my ResearchGate profile.
   </p>
   <div style="text-align: center; margin-top: 1.5rem;">
-    <a href="https://www.researchgate.net/profile/Tristan-Nolan" target="_blank" 
+    <a href="https://www.researchgate.net/profile/Tristan-Nolan" target="_blank"
        style="background: #64ffda; color: #0f0f23; padding: 0.8rem 1.5rem; border-radius: 30px; text-decoration: none; font-weight: bold;">
       View My ResearchGate Profile
     </a>
@@ -140,21 +105,7 @@ title: Home
 </section>
 
 <style>
-.wave-divider {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  height: 60px;
-  margin-bottom: -10px;
-}
-.wave-divider svg {
-  width: 100%;
-  height: 100%;
-  animation: waveMove 8s ease-in-out infinite;
-}
-@keyframes waveMove {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(-20px); }
-  100% { transform: translateX(0); }
-}
+.wave-divider{position:relative;width:100%;overflow:hidden;height:60px;margin-bottom:-10px}
+.wave-divider svg{width:100%;height:100%;animation:waveMove 8s ease-in-out infinite}
+@keyframes waveMove{0%{transform:translateX(0)}50%{transform:translateX(-20px)}100%{transform:translateX(0)}}
 </style>
