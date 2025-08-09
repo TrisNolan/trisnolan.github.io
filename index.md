@@ -15,7 +15,11 @@ title: Home
     </div>
   </div>
   <div class="hero-image" style="margin-top: 2rem;">
-    <img src="{{ '/assets/images/tristan-lab-cartoon.png' | relative_url }}" alt="Tristan cartoon in lab" style="max-width: 300px; width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);">
+    <img src="{{ '/assets/images/tristan-lab-cartoon.png' | relative_url }}" 
+         alt="Tristan cartoon in lab" 
+         style="max-width: 300px; width: 100%; border-radius: 10px; 
+                box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2); 
+                display: block; margin-left: auto; margin-right: auto;">
   </div>
 </section>
 
