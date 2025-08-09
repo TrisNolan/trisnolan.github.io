@@ -41,10 +41,16 @@ title: Home
   <p>Welcome to my corner of the microbial world. I am an environmental microbiologist driven by a curiosity about how microorganisms influence ecosystems, health, and the environment. Since 2018, I have explored topics ranging from microbial ecology and water quality to the spread of antimicrobial resistance.</p>
   <br>
   <p>This blog is where I share ideas and insights, aiming to make the fascinating world of microbiology accessible to anyone with an interest in how microbes shape our lives.</p>
+
+  <div style="margin-top: 1.5rem; text-align: center;">
+    <a href="mailto:commoninscience.blog@outlook.com" 
+       style="background: #64ffda; color: #0f0f23; padding: 0.8rem 1.5rem; 
+              border-radius: 30px; text-decoration: none; font-weight: bold;">
+      📧 Email Me
+    </a>
+  </div>
 </section>
 
-<section id="research"></section>
-<section id="contact"></section>
 <section class="research-section" id="research">
   <h2 class="section-title">Research Publications</h2>
   <p style="text-align: center; max-width: 700px; margin: auto;">
