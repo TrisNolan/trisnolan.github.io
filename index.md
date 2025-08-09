@@ -45,3 +45,15 @@ title: Home
 
 <section id="research"></section>
 <section id="contact"></section>
+<section class="research-section" id="research">
+  <h2 class="section-title">Research Publications</h2>
+  <p style="text-align: center; max-width: 700px; margin: auto;">
+    You can explore my full list of peer-reviewed publications, preprints, and conference contributions on my ResearchGate profile.
+  </p>
+  <div style="text-align: center; margin-top: 1.5rem;">
+    <a href="https://www.researchgate.net/profile/Tristan-Nolan" target="_blank" 
+       style="background: #64ffda; color: #0f0f23; padding: 0.8rem 1.5rem; border-radius: 30px; text-decoration: none; font-weight: bold;">
+      View My ResearchGate Profile
+    </a>
+  </div>
+</section>
