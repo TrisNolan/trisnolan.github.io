@@ -87,7 +87,7 @@
     }
     body.light-mode .fact-box{background:rgba(255,255,255,.85);border-color:rgba(0,0,0,.1);color:#111}
 
-    /* Microbe of the Month */
+    /* Microbe of the Month styles (used when the section exists on a page) */
     .microbe-card{
       max-width:980px;margin:3rem auto;padding:2rem;border-radius:18px;
       background:rgba(255,255,255,.05);border:1px solid rgba(100,255,218,.18);
@@ -142,16 +142,8 @@
       <div id="fact-box" class="fact-box">Loading today’s fact...</div>
     </section>
 
-    <!-- Microbe of the Month -->
-    <section id="microbe" aria-labelledby="microbe-heading">
-      <h2 id="microbe-heading" class="section-title">🦠 Microbe of the Month</h2>
-      <div class="microbe-card">
-        <img id="microbe-img" class="microbe-img" src="{{ '/assets/images/fallback.jpeg' | relative_url }}" alt="Microbe image">
-        <h3 id="microbe-name" class="microbe-title">Loading…</h3>
-        <p id="microbe-blurb" class="microbe-blurb">Fetching this month’s microbe…</p>
-        <a id="microbe-source" class="microbe-source" href="#" target="_blank" rel="noopener">Source</a>
-      </div>
-    </section>
+    <!-- The Microbe of the Month section is intentionally NOT here.
+         Add it inside pages that need it (e.g., index.md after the blog list). -->
 
     {{ content }}
   </main>
@@ -215,7 +207,7 @@
       document.querySelectorAll('#fact-box,#fact-text').forEach(el=>{el.textContent=fact;});
     });
 
-    // Microbe of the Month (uses your existing filenames)
+    // Microbe of the Month logic (safe if section isn't present)
     (function () {
       const base = "{{ '/assets/images' | relative_url }}";
       const microbes = [
@@ -239,23 +231,23 @@
         }
       ];
 
-      const now = new Date();
-      const idx = (now.getFullYear() * 12 + now.getMonth()) % microbes.length;
-      const m = microbes[idx];
-
+      // only proceed if the section exists on this page
       const img = document.getElementById("microbe-img");
       const name = document.getElementById("microbe-name");
       const blurb = document.getElementById("microbe-blurb");
       const source = document.getElementById("microbe-source");
+      if (!img || !name || !blurb || !source) return;
 
-      if (img && name && blurb && source) {
-        img.src = base + "/" + m.slug;
-        img.onerror = () => { img.src = base + "/fallback.jpeg"; };
-        name.textContent = m.name;
-        blurb.textContent = m.blurb;
-        source.textContent = "Source: " + m.source.name;
-        source.href = m.source.url;
-      }
+      const now = new Date();
+      const idx = (now.getFullYear() * 12 + now.getMonth()) % microbes.length;
+      const m = microbes[idx];
+
+      img.src = base + "/" + m.slug;
+      img.onerror = () => { img.src = base + "/fallback.jpeg"; };
+      name.textContent = m.name;
+      blurb.textContent = m.blurb;
+      source.textContent = "Source: " + m.source.name;
+      source.href = m.source.url;
     })();
 
     // theme toggle + persistence
