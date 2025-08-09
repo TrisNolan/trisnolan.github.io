@@ -23,14 +23,6 @@ title: Home
   </div>
 </section>
 
-<section class="fact-section" id="fact">
-  <h2 class="section-title">Fun Science Fact of the Day</h2>
-  <div id="fact-box" class="fact-box">
-    Loading today’s fact...
-  </div>
-</section>
-
-
 <section class="blog-section" id="blog">
   <h2 class="section-title">Latest Research & Insights</h2>
   <div class="blog-grid">
