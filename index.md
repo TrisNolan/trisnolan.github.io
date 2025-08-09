@@ -43,6 +43,54 @@ title: Home
   </div>
 </section>
 
+<!-- Microbe of the Month Section -->
+<section id="microbe-month" style="padding: 2rem 1rem; text-align: center;">
+  <h2 class="section-title">🦠 Microbe of the Month</h2>
+  <div id="microbe-card" style="background: rgba(100,255,218,0.05); border: 1px solid rgba(100,255,218,0.3); border-radius: 10px; max-width: 500px; margin: auto; padding: 1.5rem;">
+    <a id="microbe-link" href="#" target="_blank" style="text-decoration: none; color: inherit;">
+      <img id="microbe-img" src="" alt="Microbe image" style="max-width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+      <h3 id="microbe-name" style="color: #64ffda;"></h3>
+      <p id="microbe-desc" style="line-height: 1.5;"></p>
+    </a>
+    <small id="microbe-source" style="color: rgba(255,255,255,0.6); display: block; margin-top: 0.5rem;"></small>
+  </div>
+</section>
+
+<script>
+  const microbes = [
+    {
+      name: "Deinococcus radiodurans",
+      img: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Deinococcus_radiodurans.png",
+      desc: "Known as 'Conan the Bacterium', it can survive extreme radiation, cold, dehydration, and vacuum of space.",
+      source: "Source: Wikipedia",
+      link: "https://en.wikipedia.org/wiki/Deinococcus_radiodurans"
+    },
+    {
+      name: "Vibrio fischeri",
+      img: "https://upload.wikimedia.org/wikipedia/commons/8/82/Vibrio_fischeri.jpg",
+      desc: "A bioluminescent marine bacterium that lives in symbiosis with certain squid species, helping them evade predators.",
+      source: "Source: NOAA",
+      link: "https://en.wikipedia.org/wiki/Vibrio_fischeri"
+    },
+    {
+      name: "Bdellovibrio bacteriovorus",
+      img: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Bdellovibrio_bacteriovorus_TEM.jpg",
+      desc: "A bacterial predator that invades and consumes other bacteria from the inside out.",
+      source: "Source: Microbiology Society",
+      link: "https://en.wikipedia.org/wiki/Bdellovibrio_bacteriovorus"
+    }
+  ];
+
+  const monthIndex = new Date().getMonth() % microbes.length;
+  const microbe = microbes[monthIndex];
+
+  document.getElementById("microbe-name").textContent = microbe.name;
+  document.getElementById("microbe-img").src = microbe.img;
+  document.getElementById("microbe-desc").textContent = microbe.desc;
+  document.getElementById("microbe-source").textContent = microbe.source;
+  document.getElementById("microbe-link").href = microbe.link;
+</script>
+
 <!-- Microbe dots divider -->
 <svg viewBox="0 0 1440 40" width="100%" height="40" preserveAspectRatio="none" aria-hidden="true"
      style="display:block; background:transparent;">
