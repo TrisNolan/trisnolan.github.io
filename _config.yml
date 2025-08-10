@@ -1,4 +1,10 @@
-title: Common in Science
-description: A personal science blog
-theme: minima   # temporary, you will override with your layout
+title: "Common in Science Blog – Dr. Tristan Nolan"
+description: "Microbiology, antimicrobial resistance, and environmental science explained by Dr. Tristan Nolan."
+url: "https://trisnolan.github.io"
+
+theme: minima  # or your chosen theme
 rebuild: 2
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
